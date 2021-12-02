@@ -27,7 +27,7 @@ module.exports = {
         index: 1
       }, 'background-color', 'rgba(255, 0, 0, 1)') // red
       .assert.elementCount('.custom-html-icon-div', 2)
-      .waitForElementVisible('.leaflet-popup')
+      .waitForElementVisible('.leaflet-popup', 10000)
       .assert.visible('.sidebar')
       .click('.expand-altitude-btn')
       .waitForElementVisible('.heightgraph')
@@ -45,7 +45,7 @@ module.exports = {
       .assert.visible('.legend-hover')
       .moveToElement('.legend-hover', 0, 0, () => {
         browser.assert.elementCountAbove('svg.heightgraph-container g.legend', 0)
-        browser.waitForElementVisible('svg.heightgraph-container g.legend')
+        browser.waitForElementVisible('svg.heightgraph-container g.legend', 10000)
       })
       .click('.heightgraph-close-icon')
       .assert.not.elementPresent('svg.heightgraph-container')
@@ -62,7 +62,7 @@ module.exports = {
 
     browser
       .url(roundtripUrl)
-      .waitForElementVisible('.app-content')
+      .waitForElementVisible('.app-content', 10000)
       .assert.elementPresent('#app')
       .assert.elementPresent('.simple-place-search')
       .assert.elementPresent('#map-view')
@@ -73,7 +73,7 @@ module.exports = {
       .assert.elementPresent('.my-location-btn')
       .assert.not.elementPresent('.view-on-ors')
       .assert.elementPresent('.place-input-component input[type=text]')
-      .waitForElementVisible('.custom-html-icon-div')
+      .waitForElementVisible('.custom-html-icon-div', 10000)
       .assert.cssProperty({
         selector: '.custom-html-icon-div',
         index: 0
